@@ -1,5 +1,5 @@
 #UNIT TESTING:
- Aplicado en login form.
+ Aplicado en login component y con data mock
  
  #API con json server.
 
