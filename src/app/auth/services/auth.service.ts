@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, BehaviorSubject, map, catchError, throwError } from 'rxjs';
+import { Observable, BehaviorSubject, map, catchError, throwError, of } from 'rxjs';
 import { Usuario } from 'src/app/core/models';
 import { environment } from 'src/environments/environment'; 
 export interface LoginFormValue {
@@ -76,9 +76,9 @@ export class AuthService {
           return !!usuarioAutenticado;
         }),
         catchError((err) => {
-          console.log('http://localhost:3000/usuarios?token=${token}')
-          alert('Error al verificar el token');
-          return throwError(() => err);
+          
+         alert("Verificar que este corriendo json Server")
+          return of(false);
         })
       );
   }
