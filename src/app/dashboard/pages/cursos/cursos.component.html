@@ -1,0 +1,74 @@
+<div class="mb-3">
+  <button (click)="crearCurso()" color="primary" mat-flat-button>
+    <mat-icon>add</mat-icon>
+    Agregar Curso
+  </button>
+</div>
+
+<mat-form-field class="w-full">
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="aplicarFiltros($event)" placeholder="Ex. ium" #input>
+</mat-form-field>
+
+
+<table mat-table [dataSource]="dataSource">
+
+  <!-- Id Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>Id</th>
+    <td mat-cell *matCellDef="let curso"> {{curso.id}} </td>
+  </ng-container>
+
+  <!-- Nombre Column -->
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef>Nombre completo</th>
+    <td mat-cell *matCellDef="let curso">
+      {{ curso.nombre }}
+    </td>
+  </ng-container>
+
+  <!-- Fecha de Registro Column -->
+  <ng-container matColumnDef="fecha_inicio">
+    <th mat-header-cell *matHeaderCellDef>Fecha de inicio</th>
+    <td mat-cell *matCellDef="let curso"> {{curso.fecha_inicio | date: 'dd/MM/YYYY'  }} </td>
+  </ng-container>
+
+  <!-- Fecha de Registro Column -->
+  <ng-container matColumnDef="fecha_fin">
+    <th mat-header-cell *matHeaderCellDef>Fecha de fin</th>
+    <td mat-cell *matCellDef="let curso"> {{curso.fecha_fin | date: 'dd/MM/YYYY'  }} </td>
+  </ng-container>
+
+  <!-- Detalle Column -->
+  <ng-container matColumnDef="detalle">
+    <th mat-header-cell *matHeaderCellDef>Detalle</th>
+    <td mat-cell *matCellDef="let curso">
+      <button mat-icon-button  (click)="irAlDetalle(curso.id)">
+        <mat-icon>visibility</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <!-- Eliminar Column -->
+  <ng-container matColumnDef="eliminar">
+    <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+    <td mat-cell *matCellDef="let curso">
+      <button mat-icon-button (click)="eliminarCurso(curso)" >
+        <mat-icon>close</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <!-- Editar Column -->
+  <ng-container matColumnDef="editar">
+    <th mat-header-cell *matHeaderCellDef>Editar</th>
+    <td mat-cell *matCellDef="let curso">
+      <button mat-icon-button (click)="editarCurso(curso)" >
+        <mat-icon>edit</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

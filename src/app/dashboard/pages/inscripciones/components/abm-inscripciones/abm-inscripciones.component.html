@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>Inscripciones</h1>
+<div mat-dialog-content>
+  <form class="grid formgrid" [formGroup]="inscripcionesForm">
+    <!-- CONTROL DE CURSO -->
+
+    <div class="col-12 field">
+      <mat-form-field class="w-full">
+        <mat-label>Nombre del curso</mat-label>
+        <input [formControl]="cursoControl" type="text" matInput />
+        <mat-error *ngFor="let error of cursoControl.errors | keyvalue">{{
+          error | controlErrorMessages
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- CONTROL DE ALUMNO -->
+
+    <div class="col-12 field">
+      <mat-form-field class="w-full">
+        <mat-label>Alumno</mat-label>
+        <input [formControl]="alumnoControl" type="text" matInput />
+        <mat-error *ngFor="let error of cursoControl.errors | keyvalue">{{
+          error | controlErrorMessages
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+    
+ 
+
+    <div mat-dialog-actions>
+      <button mat-button mat-dialog-close>Cancelar</button>
+      <button (click)="guardar()" mat-button>Guardar</button>
+    </div>
+  </form>
+</div>
+

@@ -1,0 +1,15 @@
+
+<h1 mat-dialog-title>CURSOS INSCRITOS</h1>
+<div mat-dialog-content>
+  El alumno: <p class="text-black-50 bg-white">{{ alumno?.nombre }} {{ alumno?.apellido }}</p>  Está inscrito en:
+  
+    <div *ngFor="let inscripcion of inscripciones">
+      <li>
+        {{ inscripcion.curso.nombre }}
+      </li>
+    </div>
+  
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="" cdkFocusInitial>Cerrar</button>
+</div>

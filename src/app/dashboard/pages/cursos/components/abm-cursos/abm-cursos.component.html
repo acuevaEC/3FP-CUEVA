@@ -1,0 +1,41 @@
+<h1 mat-dialog-title>ABM Cursos</h1>
+<div mat-dialog-content>
+  <form class="grid formgrid" [formGroup]="cursoForm">
+    <!-- CONTROL DE NOMBRE -->
+
+    <div class="col-12 field">
+      <mat-form-field class="w-full">
+        <mat-label>Nombre</mat-label>
+        <input
+          [formControl]="nombreControl"
+          type="text"
+          matInput
+        >
+        <mat-error *ngFor="let error of nombreControl.errors | keyvalue">{{ error | controlErrorMessages }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field class="w-full">
+        <mat-label>Fecha de inicio</mat-label>
+        <input [formControl]="fechaInicioControl" matInput [matDatepicker]="fechaInicioPicker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="fechaInicioPicker"></mat-datepicker-toggle>
+        <mat-datepicker #fechaInicioPicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field class="w-full">
+        <mat-label>Fecha de fin</mat-label>
+        <input [formControl]="fechaFinControl" matInput [matDatepicker]="fechaFinPicker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="fechaFinPicker"></mat-datepicker-toggle>
+        <mat-datepicker #fechaFinPicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button (click)="guardar()" mat-button>Guardar</button>
+</div>

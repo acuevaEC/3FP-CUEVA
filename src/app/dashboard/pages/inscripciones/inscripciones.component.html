@@ -1,0 +1,58 @@
+
+<mat-form-field class="w-full">
+  <mat-label>Filtrar por ID</mat-label>
+  <input
+    matInput
+    (keyup)="aplicarFiltros($event)"
+    placeholder="Ingresa ID"
+    #input
+  /> 
+</mat-form-field>
+
+<table mat-table [dataSource]="dataSource">
+  <!-- Id Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>Id</th>
+    <td mat-cell *matCellDef="let inscripcion">{{ inscripcion.id }}</td>
+  </ng-container>
+
+  <!-- Nombre Curso Column -->
+  <ng-container matColumnDef="curso">
+    <th mat-header-cell *matHeaderCellDef>Curso</th>
+    <td mat-cell *matCellDef="let inscripcion">
+      {{ inscripcion.curso.nombre  }}
+    </td>
+  </ng-container>
+
+  <!-- Nombre Completo Column -->
+  <ng-container matColumnDef="nombreCompleto">
+    <th mat-header-cell *matHeaderCellDef>Nombre Alumno</th>
+    <td mat-cell *matCellDef="let inscripcion">
+      {{ inscripcion.alumno | nombreCompleto : "mayuscula" : "cualquiercosa" }}
+    </td>
+  </ng-container>
+
+
+  <!-- Eliminar Column  -->
+  <ng-container matColumnDef="eliminar">
+    <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+    <td mat-cell *matCellDef="let curso">
+      <button mat-icon-button (click)="eliminarInscripcion(curso)">
+        <mat-icon>close</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <!--Editar Column   -->
+  <ng-container matColumnDef="editar">
+    <th mat-header-cell *matHeaderCellDef>Editar</th>
+    <td mat-cell *matCellDef="let curso">
+      <button mat-icon-button (click)="editarInscripcion(curso)">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

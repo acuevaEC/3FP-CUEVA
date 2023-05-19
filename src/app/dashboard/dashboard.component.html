@@ -1,0 +1,73 @@
+<mat-drawer-container class="example-container" autosize>
+
+  <!-- SIDEBAR -->
+  <mat-drawer [opened]="true" #drawer class="example-sidenav" mode="side">
+
+
+    <img width="50" height="50" src="../../assets/img/foto2.png">
+
+    <p>{{ (authUser$ | async)?.nombre }} {{ (authUser$ | async)?.apellido }}</p>
+    <p>{{ (authUser$ | async)?.email }} </p>
+
+
+    <mat-nav-list>
+      <a
+        [routerLink]="link.path"
+        mat-list-item
+        *ngFor="let link of links"
+      >
+        <mat-icon *ngIf="link.icon">{{ link.icon }}</mat-icon> {{ link.title }}
+      </a>
+      <a
+        (click)="logout()"
+        mat-list-item
+      >
+        Cerrar sesión
+      </a>
+    </mat-nav-list>
+
+
+  </mat-drawer>
+
+  <!-- MI WRAPPER  -->
+  <div class="example-sidenav-content">
+    <!-- TOOLBAR  -->
+    <mat-toolbar color="primary">
+      <div class="flex justify-content-between">
+        <div>
+          <button
+            (click)="drawer.toggle()"
+            mat-icon-button
+            class="example-icon"
+            aria-label="Example icon-button with menu icon"
+          >
+            <mat-icon>menu</mat-icon>
+          </button>
+          <span> Proyecto Andres Cueva </span>
+          <span class="example-spacer"></span>
+          
+        </div>
+        
+      </div>
+    </mat-toolbar>
+
+    <!-- MIS PAGINAS -->
+    <main>
+      <router-outlet></router-outlet>
+
+      <!-- <app-cards></app-cards> -->
+
+      <!-- <app-buttons-and-icons></app-buttons-and-icons> -->
+
+      <!-- <app-formularios></app-formularios> -->
+
+      <!-- <app-dialogs></app-dialogs> -->
+
+      <!-- <app-tablas></app-tablas> -->
+
+      <!-- <app-patron-iterador></app-patron-iterador> -->
+
+      <!-- <app-observables></app-observables> -->
+    </main>
+  </div>
+</mat-drawer-container>

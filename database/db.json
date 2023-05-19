@@ -1,0 +1,48 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "Andres",
+      "apellido": "Cuevas",
+      "email": "andres.cueva.c@gmail.com",
+      "password": "1234",
+      "token": "asfdjñlaksasdf345AasdfasdfasdfA4saasdfasdf334dsfdf",
+      "rol": "Admin"
+    },
+    {
+      "id": 2,
+      "nombre": "Ramiro",
+      "apellido": "Perez",
+      "email": "rami.p.c@gmail.com",
+      "password": "andres.cueva.c@gmail.com",
+      "token": "asfdjñlakssdf345AasdfasdfasdfA4saasdfasdf334dsfdf",
+      "rol": "user"
+    }
+  ],
+  "cursos": [
+    {
+      "id": 1,
+      "nombre": "Angular",
+      "fecha_fin": "2024-04-26T05:00:00.000Z",
+      "fecha_inicio": "2023-04-26T05:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "nombre": "Javascript",
+      "fecha_fin": "2023-04-27T01:27:59.631Z",
+      "fecha_inicio": "2023-04-27T01:27:59.631Z"
+    },
+    {
+      "id": 3,
+      "nombre": "Desarrollo Web",
+      "fecha_fin": "2023-04-27T01:27:59.631Z",
+      "fecha_inicio": "2023-04-27T01:27:59.631Z"
+    },
+    {
+      "id": 4,
+      "nombre": "CSS2",
+      "fecha_inicio": "2023-04-11T05:00:00.000Z",
+      "fecha_fin": "2024-04-12T05:00:00.000Z"
+    }
+  ]
+}
