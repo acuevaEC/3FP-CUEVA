@@ -21,6 +21,10 @@ export class AuthService {
     private httpClient: HttpClient,
   ) { }
 
+  establecerUsuarioAutenticado(usuario: Usuario): void {
+    this.authUser$.next(usuario);
+   // this.store.dispatch(EstablecerUsuarioAutenticado({ payload: { ...usuario, token } }));
+  }
   obtenerUsuarioAutenticado(): Observable<Usuario | null> {
     //console.log(this.authUser$.value?.apellido)
     
@@ -41,7 +45,7 @@ export class AuthService {
         const usuarioAutenticado = usuarios[0];
         if (usuarioAutenticado) {
           localStorage.setItem('token', usuarioAutenticado.token)
-          this.authUser$.next(usuarioAutenticado);
+          this.establecerUsuarioAutenticado(usuarioAutenticado);
           this.router.navigate(['dashboard']);
         } else {
           alert('¡Usuario y contraseña incorrectos!')

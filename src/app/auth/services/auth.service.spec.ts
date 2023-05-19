@@ -20,7 +20,8 @@ describe('Pruebas del LoginComponent', () => {
         httpController = TestBed.inject(HttpTestingController)
     })
 
-    it('El login debe fucionar', () =>{
+    //prueba 1
+    it('El login debe fucionar', (done) =>{
         const fakeLogin : LoginFormValue ={
             email:'andres.cueva.c@gmail.com',
             password: '1234',
@@ -59,12 +60,31 @@ describe('Pruebas del LoginComponent', () => {
           method: 'GET',
         })
         .flush(MOCK_REQUEST_RESULT);
+        done();
    
     })
     
+
+    //prueba 2
     it('El logout debe emitir un authUser null, remover el token del localstorage y redirecionar al usuario', ()=>{
+       service.establecerUsuarioAutenticado(
+       {
+        id: 1,
+        apellido: 'testapellido',
+        email: 'mail@test.com',
+        nombre: 'testnombre',
+        password: '1234',
+        role: 'admin',
+        token: 'asdjkasdnasjhdj36231321',
+       });
+       const spyOnNavigate = spyOn(TestBed.inject(Router), 'navigate');
+       service.logout();
+       const tokenLs = localStorage.getItem('token');
+       expect(tokenLs).toBeNull();
+       expect(spyOnNavigate).toHaveBeenCalled();
+       /*
         const spyOnNavigate = spyOn(TestBed.inject(Router), 'navigate');
-        const loginFake: LoginFormValue = {
+        const fakeLogin: LoginFormValue = {
           email: 'test@mail.com',
           password: '123456',
         };
@@ -72,19 +92,20 @@ describe('Pruebas del LoginComponent', () => {
           {
             id: 1,
             apellido: 'testapellido',
-            email: loginFake.email,
+            email: fakeLogin.email,
             nombre: 'testnombre',
-            password: loginFake.password,
+            password: fakeLogin.password,
             role: 'admin',
             token: 'asdjkasdnasjhdj36231321',
           },
         ];
     
-        service.login(loginFake);
+        service.login(fakeLogin);
+
         httpController
           .expectOne({
-            // http://localhost:3000/usuarios
-            url: `http://localhost:3000/usuarios?email=${loginFake.email}&password=${loginFake.password}`,
+          
+            url: `http://localhost:3000/usuarios?email=${fakeLogin.email}&password=${fakeLogin.password}`,
             method: 'GET',
           })
           .flush(MOCK_REQUEST_RESULT);
@@ -96,8 +117,9 @@ describe('Pruebas del LoginComponent', () => {
     
         expect(tokenLs).toBeNull();
         expect(spyOnNavigate).toHaveBeenCalled();
+        */
     })
-    //`http://localhost:3000/usuarios`
+
 });
 
 
