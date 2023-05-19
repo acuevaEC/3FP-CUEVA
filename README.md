@@ -1,3 +1,8 @@
+#UNIT TESTING:
+ Aplicado en login form.
+ 
+ #API con json server.
+
 # ProgReactCueva
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.2.
