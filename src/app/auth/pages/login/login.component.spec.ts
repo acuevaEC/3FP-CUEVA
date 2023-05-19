@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { PipesModule } from "src/app/shared/pipes/pipes.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AuthService } from "../../services/auth.service";
+import { AuthServiceMock } from "../../mocks/auth-service.mock";
 
 describe('Pruebas del LoginComponent', () => {
   let component: LoginComponent;
@@ -30,6 +31,7 @@ describe('Pruebas del LoginComponent', () => {
       providers: [
         {
           provide: AuthService,
+          useClass: AuthServiceMock,
         }
       ]
     }).compileComponents();
@@ -51,14 +53,12 @@ describe('Pruebas del LoginComponent', () => {
   it('Si el loginForm es invalido, debe marcar todos los controles como touched', () => {
     component.loginForm.setValue({ email: null, password: null })
     const spyOnMarkAllAsTouched = spyOn(component.loginForm, 'markAllAsTouched');
-
     component.onSubmit();
-
     expect(spyOnMarkAllAsTouched).toHaveBeenCalled();
   });
 
   it('Si el loginForm es valido, debe llamar al metodo login del AuthService', () => {
-    component.loginForm.setValue({ email: 'test@mail.com', password: '123456' });
+    component.loginForm.setValue({ email: 'test@mail.com', password: '12312312' });
     const spyOnAuthServiceLogin = spyOn(TestBed.inject(AuthService), 'login');
     component.onSubmit();
     expect(component.loginForm.valid).toBeTrue();
