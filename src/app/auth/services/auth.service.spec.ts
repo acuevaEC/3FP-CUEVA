@@ -82,42 +82,7 @@ describe('Pruebas del LoginComponent', () => {
        const tokenLs = localStorage.getItem('token');
        expect(tokenLs).toBeNull();
        expect(spyOnNavigate).toHaveBeenCalled();
-       /*
-        const spyOnNavigate = spyOn(TestBed.inject(Router), 'navigate');
-        const fakeLogin: LoginFormValue = {
-          email: 'test@mail.com',
-          password: '123456',
-        };
-        const MOCK_REQUEST_RESULT: Usuario[] = [
-          {
-            id: 1,
-            apellido: 'testapellido',
-            email: fakeLogin.email,
-            nombre: 'testnombre',
-            password: fakeLogin.password,
-            role: 'admin',
-            token: 'asdjkasdnasjhdj36231321',
-          },
-        ];
-    
-        service.login(fakeLogin);
-
-        httpController
-          .expectOne({
-          
-            url: `http://localhost:3000/usuarios?email=${fakeLogin.email}&password=${fakeLogin.password}`,
-            method: 'GET',
-          })
-          .flush(MOCK_REQUEST_RESULT);
-    
-    
-        service.logout();
-    
-        const tokenLs = localStorage.getItem('token');
-    
-        expect(tokenLs).toBeNull();
-        expect(spyOnNavigate).toHaveBeenCalled();
-        */
+      
     })
 
 });
